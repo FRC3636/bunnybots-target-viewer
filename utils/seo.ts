@@ -5,7 +5,7 @@ import type { ManifestOptions } from "vite-plugin-pwa";
  * Defines the default SEO configuration for the website.
  */
 export const seoConfig = {
-    baseURL: "https://frc3636.github.io/target-viewer", // Change this to your production URL.
+    baseURL: "https://frc3636.github.io/bunnybots-target-viewer", // Change this to your production URL.
     description: "Bunnybots Robot Target Viewer - Generals Robotics", // Change this to be your website's description.
     type: "website",
     image: {
