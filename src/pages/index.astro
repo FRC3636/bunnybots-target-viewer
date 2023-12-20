@@ -1,0 +1,10 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Viewer from "../lib/Viewer.svelte";
+import "../main.scss";
+---
+
+<Layout>
+    <h1 class="text-xl font-bold mb-4">Target Viewer</h1>
+    <Viewer client:load />
+</Layout>

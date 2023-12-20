@@ -1,0 +1,72 @@
+---
+import { SEO } from "astro-seo";
+import { seoConfig, manifest } from "../../utils/seo.ts";
+
+export interface Props {
+    title?: string;
+    description?: string;
+    disableIndexing?: boolean;
+    ogTitle?: string;
+}
+
+const title = Astro.props.title ?? seoConfig.siteName;
+const description = Astro.props.description ?? seoConfig.description;
+const disableIndexing = Boolean(Astro.props.disableIndexing);
+const ogTitle = Astro.props.ogTitle ?? title;
+---
+
+<html lang="en">
+    <head>
+        <SEO
+            title={title}
+            description={description}
+            noindex={disableIndexing}
+            nofollow={disableIndexing}
+            openGraph={{
+                basic: {
+                    title: ogTitle || title,
+                    type: "website",
+                    image: seoConfig.image.url,
+                },
+                image: {
+                    width: seoConfig.image.width,
+                    height: seoConfig.image.height,
+                    alt: seoConfig.image.alt,
+                },
+                optional: {
+                    siteName: seoConfig.siteName,
+                    description,
+                },
+            }}
+            charset="utf-8"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="/favicon-16x16.png"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <!-- <meta name="theme-color" content={manifest.theme_color} /> -->
+        <link
+            rel="alternate"
+            type="application/json+oembed"
+            href={`${seoConfig.baseURL}/oembed.json`}
+        />
+    </head>
+    <body class="p-8">
+        <slot />
+    </body>
+</html>
