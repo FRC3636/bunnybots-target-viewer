@@ -7,11 +7,14 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [svelte(), tailwind()],
-  site: "https://frc3636.github.io/target-viewer",
-  vite: {
-    plugins: [VitePWA({
-      manifest
-    })]
-  }
+    integrations: [svelte(), tailwind()],
+    site: "https://frc3636.github.io/target-viewer",
+    base: "/target-viewer",
+    vite: {
+        plugins: [
+            VitePWA({
+                manifest,
+            }),
+        ],
+    },
 });
